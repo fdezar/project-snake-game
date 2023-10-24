@@ -9,29 +9,75 @@ main {
     justify-content: center;
     align-items: center;
 }
+.container {
+    display: flex;
+    justify-content: space-between;
+}
 #start-screen {
     max-width: 500px;
-    justify-items: start;
     display: flex;
     align-items: center;
     margin: 3rem 0 1rem 0;
 }
-#start-screen-img {
+#game-logo-img {
+    width: 15vh;
+    height: auto; 
+}
+#start-screen h1 {
+    font-size: 6rem;
+    font-weight: bold;
+}
+#arrow-keys-img {
     width: 25vh;
     height: auto;
-}
-h1 {
-    font-family: b;
-    font-size: 10rem;
-    font-weight: bold;
+    margin: 3vh 0 20vh 0;
 }
 #game-screen {
     background-color: #151415;
     display: flex;
     width: 500px;
     height: 500px;
-    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    margin: 0rem 0 1rem 0;
 }
+.align-center {
+    display: flex;
+    align-items: center;
+}
+.justify-center {
+    display: flex;
+    justify-items: center;
+}
+#replay {
+    font-size: 15px;
+    padding: 10px 20px;
+    background: #6e7888;
+    border: none;
+    color: #313541;
+    border-radius: 20px;
+    font-weight: 800;
+    transform: rotate(-90deg);
+    cursor: pointer;
+    transition: all 200ms;
+  }
+  #replay:hover {
+    background: #777980;
+    background: #b036e4;
+    transition: all 200ms 
+  }
+#score {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 50px;
+    transform: rotate(-90deg);
+    width: 50px;
+    height: 211px;
+    margin: 0 0 0 5vh;
+
+}
+#points {
+    font-weight: 800;
+    margin: 0 0 0 5vh;
+}
+  

@@ -14,22 +14,34 @@
 <body>
     <main>
         <!-- start screen -->
-        <div id="start-screen">
-            <img src="./images/snake-game-logo.png" alt="snake-game-logo" id="start-screen-img" />
+        <header>
+            <div id="start-screen">
+                <img src="./images/snake-game-logo.png" alt="snake-game-logo" id="game-logo-img" />
 
-            <h1>SNAKE</h1>
+                <h1>SNAKE</h1>
 
-            <p>by Gabri & Marcel</p>
+                <p>by Gabri & Marcel</p>
 
-            <!-- <button id="game-start"></button> -->
-        </div>
-
+                <!-- <button id="game-start"></button> -->
+            </div>
+        </header>
         <!-- game screen -->
-        <div id="game-screen">
-             
+        <div class="container">
+            <div class="align-center">
+                <button id="replay">
+                    RESTART
+                </button>
+            </div>
+            <div id="game-screen">
+                
+            </div>
+            <div id="score">
+                <h2>SCORE</h2>
+                <span id="points">00</span>
+            </div> 
         </div>
-        <div>
-            <img src="./images/arrow-keys.png" alt="arrow-keys" id="start-screen-img" />
+        <div class="justify-center">
+            <img src="./images/arrow-keys.png" alt="arrow-keys" id="arrow-keys-img" />
         </div>
 
         <!-- ending screen -->
