@@ -18,6 +18,7 @@ window.onload = () => {
         location.reload();
     }
 
+    // handle keys
     const handleKeydown = event => {
         const key = event.key;
         const possibleKeystrokes = [
@@ -33,18 +34,29 @@ window.onload = () => {
 
         switch(key) {
             case "Arrowleft":
-                // habría que hacer un loop mantenido?
-                newGame.snake.directionX = null;
+                newGame.snake.directionX = -1;
+                newGame.snake.directionY = 0;
                 break;
             case "ArrowUp":
+                newGame.snake.directionX = 0;
+                newGame.snake.directionY = -1;
                 break;
             case "ArrowRight":
+                newGame.snake.directionX = 1;
+                newGame.snake.directionY = 0;
                 break;
             case "ArrowDown":
+                newGame.snake.directionX = 0;
+                newGame.snake.directionY = 1;
                 break;
             }
         }
     }
 
+    const initGame = () => {
+
+    }
+
+    setInterval(initGame, 125);
     window.addEventListener("keydown", handleKeydown);
 }

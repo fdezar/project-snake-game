@@ -9,8 +9,6 @@ class Game {
             40,
             null //image
         );
-        this.height = 500;
-        this.width = 500;
         this.food = [];
         this.scoreElement = null;
         this.score = 0;
@@ -18,13 +16,15 @@ class Game {
     }
 
     start() {
+
+
         // aquí depende de lo que hagamos,
         // podría ser simplemente quitar el
         // mensaje que haya o algo
     }
 
-    gameLoop() {
-        // no sé si lo necesitamos
+    changeFoodPosition() {
+        
     }
 
     update() {
@@ -32,10 +32,20 @@ class Game {
 
         // se pone el condicional del food
         // aquí se crean nuevos food
+        if(this.food.length < 1) {
+            this.food.push(new Food(this.gameScreen));
+        }
     }
 
     endGame() {
-        this.gameIsOver = true;
-        // activar style del game over
+        if (
+            directionX <= 0 || 
+            directionX > 30 || 
+            directionY <= 0 ||
+            directionY > 30
+            ) {
+                this.gameIsOver = true;
+            }
+        
     }
 }

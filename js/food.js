@@ -8,12 +8,8 @@ class Food extends Component {
             100,
             "/images/x.png"
         );
-    }
 
-    // para generar un nuevo food una vez se
-    // haya comido?
-    move() {
-
-        this.updatePosition();
+        this.directionX = 13;
+        this.directionY = 10;
     }
 }
