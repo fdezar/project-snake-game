@@ -1,44 +1,9 @@
+/* background-color: #69606D;
+background-color game screen: #151415; */
+
 body {
-    background-color: #69606D;
-}
-main {
-    display: flex;
+    background: linear-gradient(#69606D, #bb7c4c);
     width: 100%;
-    height: 100%;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-}
-.container {
-    display: flex;
-    justify-content: space-between;
-}
-#start-screen {
-    max-width: 500px;
-    display: flex;
-    align-items: center;
-    margin: 3rem 0 1rem 0;
-}
-#game-logo-img {
-    width: 15vh;
-    height: auto; 
-}
-#start-screen h1 {
-    font-size: 6rem;
-    font-weight: bold;
-}
-#arrow-keys-img {
-    width: 25vh;
-    height: auto;
-    margin: 3vh 0 20vh 0;
-}
-#game-screen {
-    background-color: #151415;
-    display: flex;
-    width: 500px;
-    height: 500px;
-    justify-content: center;
-    align-items: center;
 }
 .align-center {
     display: flex;
@@ -46,7 +11,56 @@ main {
 }
 .justify-center {
     display: flex;
-    justify-items: center;
+    justify-content: center;
+}
+.display-block {
+    display: block;
+}
+#start-screen {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0 1rem 0;
+}
+#game-logo-img {
+    width: 10vh;
+    height: auto;
+    margin-right: 2vh;
+}
+#start-screen h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 4rem;
+    margin-right: 2vh;
+}
+#start-screen p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+}
+#container {
+    display: flex;
+    justify-content: center;
+}
+#game-screen {
+    background-color: #151415;
+    display: grid;
+    grid-template: repeat(30, 1fr) / repeat(30, 1fr);
+    width: 500px;
+    height: 500px;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+#restar-button {
+    display: flex;
+    align-items: center;
+    width: 110px;
+}
+#score-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
 }
 #replay {
     font-size: 15px;
@@ -59,22 +73,30 @@ main {
     transform: rotate(-90deg);
     cursor: pointer;
     transition: all 200ms;
-  }
+}
   #replay:hover {
     background: #777980;
-    background: #b036e4;
+    background: #bb7c4c;
     transition: all 200ms 
-  }
+}
 #score {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
     display: flex;
     align-items: center;
-    text-align: center;
     font-size: 50px;
     transform: rotate(-90deg);
-    width: 50px;
-    height: 211px;
-    margin: 0 0 0 5vh;
-
+    width: auto;
+}
+#arrow-keys-img {
+    width: 10vh;
+    height: auto;
+    margin: 3vh 0 10vh 0;
+}
+.arrow-keys {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 #points {
     font-weight: 800;
