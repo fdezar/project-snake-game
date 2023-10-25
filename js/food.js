@@ -14,5 +14,6 @@ class Food extends Component {
     // haya comido?
     move() {
 
+        this.updatePosition();
     }
 }

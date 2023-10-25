@@ -12,6 +12,7 @@ class Game {
         this.height = 500;
         this.width = 500;
         this.food = [];
+        this.scoreElement = null;
         this.score = 0;
         this.gameIsOver = false;
     }

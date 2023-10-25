@@ -15,6 +15,6 @@ class Snake extends Component {
     }
 
     crashIntoWall() {
-
+        
     }
 }
