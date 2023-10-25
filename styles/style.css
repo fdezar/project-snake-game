@@ -65,9 +65,9 @@ body {
 #replay {
     font-size: 15px;
     padding: 10px 20px;
-    background: #6e7888;
+    background: #69606D;
     border: none;
-    color: #313541;
+    color: #2f2c31;
     border-radius: 20px;
     font-weight: 800;
     transform: rotate(-90deg);
@@ -84,7 +84,7 @@ body {
     font-weight: bold;
     display: flex;
     align-items: center;
-    font-size: 50px;
+    font-size: 40px;
     transform: rotate(-90deg);
     width: auto;
 }
