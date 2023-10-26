@@ -1,0 +1,17 @@
+- Crear un snake (punto)
+    - Crear un div en un punto específico del grid y estilarlo con un color
+- El snake que se mueva
+    - HandleKeydown
+    - No hay start screen, que empiece en 0 la velocidad y que luego al presionar algo se active el setInterval
+    - Hacer que cuando se presione una tecla vaya hacia un lugar u otro
+    - Cómo hacer para que siga adelante presionando solo una vez (setInterval)
+- Crear el punto de food inicial por random
+- Cuando el snake toque food que se genere otro food por random
+- El snake que crezca
+- Cuando toque a si mismo se muera
+    - Comprobar que por cada fragmento de cola si es igual a la posición de cualquiera de los del array que se muera
+
+- Condiciones de perder (tocar el muro o tocarse a si mismo)
+- Aumento del score
+- Cuando se toque el restart empezar el juego de nuevo
+

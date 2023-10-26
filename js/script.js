@@ -53,10 +53,6 @@ window.onload = () => {
         }
     }
 
-    const initGame = () => {
-
-    }
-
     setInterval(initGame, 125);
     window.addEventListener("keydown", handleKeydown);
 }

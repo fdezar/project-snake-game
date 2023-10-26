@@ -22,38 +22,35 @@
 
                 <p>by Gabri & Marcel</p>
 
-                <!-- <button id="game-start"></button> -->
             </div>
         </header>
         <!-- game screen -->
-        <div class="container">
-            <div class="align-center">
-                <button id="replay">
+        <div id="container">
+            <div id="game-start">
+                <button id="start-button">START</button>
+            </div>
+            <div id="restart-button">
+                <button id="restart">
                     RESTART
                 </button>
             </div>
-            <div id="game-screen">
-                
+            <div class="display-block">
+                <div class="game-screen">
+                    
+                </div>
             </div>
-            <div id="score">
-                <h2>SCORE</h2>
-                <span id="points">00</span>
+            <div id="score-title">
+                <div id="score">
+                    <h2>SCORE</h2>
+                    <span id="points">00</span>
+                </div>
             </div> 
         </div>
-        <div class="justify-center">
+        <div class="arrow-keys">
             <img src="./images/arrow-keys.png" alt="arrow-keys" id="arrow-keys-img" />
-        </div>
-
-        <!-- ending screen -->
-        <div id="ending-screen">
-
         </div>
     </main>
 
-    <script type="text/javascript" src="component.js"></script>
-    <script type="text/javascript" src="food.js"></script>
-    <script type="text/javascript" src="snake.js"></script>
-    <script type="text/javascript" src="game.js"></script>
-    <script type="text/javascript" src="script.js"></script>
+    <script src="./js/game.js"></script>
 </body>
 </html>
