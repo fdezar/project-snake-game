@@ -15,3 +15,5 @@
 - Aumento del score
 - Cuando se toque el restart empezar el juego de nuevo
 
+- El mecanismo de comer funciona, se añade uno a la cola, lo he descubierto por error
+
