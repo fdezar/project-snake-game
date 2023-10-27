@@ -1,7 +1,8 @@
 class Game {
-    constructor(width, height) {
+    constructor(width, height, newGame) {
         this.width = width;
         this.height = height;
+        this.newGame = newGame;
         /*
         El método this.grid consiste en un array 2D (recto, representa
         las filas) que a su vez tiene un .map que hace que se generen
@@ -235,9 +236,11 @@ class Game {
     }
 }
 
+let newGame;
+
 window.onload = () => {
     
-    let newGame;
+    newGame = new Game(30, 30, newGame);
 
     /* restart, ejecutando la función de dentro de la clase 
     una vez pulsado el botón */
@@ -269,6 +272,6 @@ window.onload = () => {
 }
 
 // inicialización del juego posterior a que todo lo demás esté cargado
-document.addEventListener("DOMContentLoaded", () => {
+/* document.addEventListener("DOMContentLoaded", () => {
     newGame = new Game(30, 30);
-});
+}); */
