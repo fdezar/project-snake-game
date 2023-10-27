@@ -14,7 +14,7 @@ class Game {
         el food.
         */
         this.grid = new Array(height).fill(null).map(() => new Array(width).fill(null));
-        this.snake = [{ x: 10, y: 10 }];
+        this.snake = [{ x: 1, y: 1 }];
         this.direction = "right";
         this.food = this.generateFood();
         this.score = 0;
@@ -139,6 +139,7 @@ class Game {
             snakeHead.y >= this.width
         ) {
             this.gameOver = true;
+            return;
         }
 
         /* detectar una self-collision, comparando las coordenadas
@@ -146,10 +147,11 @@ class Game {
         eso significa que debe haber sido una colisión. Game over
         */
        for (let i = 1; i < this.snake.length; i++) {
-        // comparar coordenadas con cada elemento del snake array
-        // con cada iteración
+        /* comparar coordenadas con cada elemento del snake array
+        con cada iteración */
             if(snakeHead.x === this.snake[i].x && snakeHead.y === this.snake[i].y) {
                 this.gameOver = true;
+                return;
             }
         }
 
@@ -197,23 +199,32 @@ class Game {
         this.grid[this.food.x][this.food.y] = "food";
     }
 
-    // haz un update visual de todo
+    // genera y muestra todo el contenido en pantalla
     displayGrid() {
+        // referencia del gameScreen, ubicado en el constructor
         const gameScreen = this.gameScreen;
+        // inicializar gameScreen a un string vacío
         gameScreen.innerHTML = '';
 
+        // iterate over the rows (y)
         for (let y = 0; y < this.height; y++) {
+            const row = document.createElement("div");
+            row.className = "grid-row";
+            // iterate over the columns (x)
             for(let x = 0; x < this.width; x++) {
                 const cell = document.createElement("div");
                 cell.className = "grid-cell";
+
                 if (this.grid[y][x] === "snake") {
                     cell.classList.add("snake");
                 } else if (this.grid[y][x] === "food") {
                     cell.classList.add("food");
                 }
 
-                gameScreen.appendChild(cell);
+                row.appendChild(cell);
             }
+
+            gameScreen.appendChild(row);
             this.updateGrid();
         }
     }
@@ -223,8 +234,8 @@ window.onload = () => {
     
     let newGame;
 
-    // restart, ejecutando la función de dentro de la clase una vez
-    // pulsado el botón
+    /* restart, ejecutando la función de dentro de la clase 
+    una vez pulsado el botón */
     const restartButton = document.getElementById("restart");
     restartButton.addEventListener("click", () => {
         newGame.restartGame();
@@ -233,6 +244,9 @@ window.onload = () => {
     // handleKeydown, que detecte el teclado
     document.addEventListener("keydown", (event) => {
         switch(event.key) {
+            /* en el caso de que se presione una tecla,
+            haz que entre un parámetro en .changeDirection,
+            que cambiará la dirección en la clase */
             case "ArrowUp":
                 newGame.changeDirection("up");
                 break;
