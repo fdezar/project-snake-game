@@ -206,24 +206,29 @@ class Game {
         // inicializar gameScreen a un string vacío
         gameScreen.innerHTML = '';
 
-        // iterate over the rows (y)
+        // iterar por las rows (y)
         for (let y = 0; y < this.height; y++) {
+            // creación de las grid-row
             const row = document.createElement("div");
             row.className = "grid-row";
-            // iterate over the columns (x)
+            // iterar por las columnas (x)
             for(let x = 0; x < this.width; x++) {
+                // creación de las grid-cell
                 const cell = document.createElement("div");
                 cell.className = "grid-cell";
 
+                // si es snake o food, añádele la clase
                 if (this.grid[y][x] === "snake") {
                     cell.classList.add("snake");
                 } else if (this.grid[y][x] === "food") {
                     cell.classList.add("food");
                 }
 
+                // añade las cells a los grid-row como hijos
                 row.appendChild(cell);
             }
 
+            // añade los rows al gameScreen
             gameScreen.appendChild(row);
             this.updateGrid();
         }
