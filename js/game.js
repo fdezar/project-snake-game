@@ -15,8 +15,8 @@ class Game {
         el food.
         */
         this.grid = new Array(height).fill(null).map(() => new Array(width).fill(null));
-        this.snake = [{ x: 1, y: 1 }];
-        this.direction = "right";
+        this.snake = [{ x: 15, y: 15 }];
+        this.direction = null;
         this.food = this.generateFood();
         this.score = 0;
         this.gameOver = false;
@@ -24,7 +24,7 @@ class Game {
         this.gameScreen = document.querySelector(".game-screen");
         this.scoreElement = document.getElementById("score");
         this.scoreElement.innerHTML = `SCORE ${this.score}`;
-
+            console.log(this.snake)
         // para que el juego pueda empezar presionando una flecha
         document.addEventListener("keydown", (event) => {
             if (
@@ -124,7 +124,7 @@ class Game {
             (directionPressed === "right" && this.direction !== "left")
         ) {
             this.direction = directionPressed;
-            newGame.updateGrid();
+            
         }
     }
 
@@ -164,22 +164,24 @@ class Game {
 
         // mostrar el juego
         this.displayGrid();
-
+        this.moveSnake();
+        this.updateGrid();
+        
         // iniciar el intervalo de la serpiente al mismo tiempo que
         // se mueve la misma y se actualiza el terreno de juego
-        this.intervalId = setInterval(() => {
-            this.moveSnake();
-            this.updateGrid();
-        }, 125);
+        // this.intervalId = setInterval(() => {
+        //     
+        // }, 125);
     }
     
     restartGame() {
 
         // restaurar a los valores originales
-        this.snake = [{ x: 10, y: 10 }];
-        this.direction = "right";
+        this.snake = [{ x: 15, y: 15 }];
+        this.direction = null;
         this.food = this.generateFood();
         this.intervalId = null;
+        this.score = 0;
 
         // volver a empezar el juego
         this.startGame();
