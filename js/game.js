@@ -24,18 +24,20 @@ class Game {
         this.gameScreen = document.querySelector(".game-screen");
         this.scoreElement = document.getElementById("score");
         this.scoreElement.innerHTML = `SCORE ${this.score}`;
-            console.log(this.snake)
+        this.displayGrid();
         // para que el juego pueda empezar presionando una flecha
-        document.addEventListener("keydown", (event) => {
-            if (
-                event.key === "ArrowUp" ||
-                event.key === "ArrowDown" ||
-                event.key === "ArrowLeft" ||
-                event.key === "ArrowRight"
-            ) {
-                this.startGame();
-            }
-        });
+        // document.addEventListener("keydown", (event) => {
+        //     console.log("starting game");
+        //     if (
+        //         event.key === "ArrowUp" ||
+        //         event.key === "ArrowDown" ||
+        //         event.key === "ArrowLeft" ||
+        //         event.key === "ArrowRight"
+        //     ) {
+        //         this.startGame();
+        //     }
+        // });
+        this.startGame();
     }
 
     generateFood() {
@@ -59,6 +61,8 @@ class Game {
 
     moveSnake() {
 
+        console.log("Current direction:", this.direction);
+        console.log("Snake head position:", this.snake[0].x, this.snake[0].y);
         // definición de serpiente y creación de copia
         const snakeHead = {...this.snake[0]};
 
@@ -104,7 +108,7 @@ class Game {
 
         // si hay un gameOver, para el setInterval. Si no, sigue
         if(this.gameOver === true) {
-            clearInterval(intervalId);
+            clearInterval(this.intervalId);
         } else {
             this.updateGrid();
         }
@@ -117,6 +121,7 @@ class Game {
     serpiente y perder
     */
     changeDirection(directionPressed) {
+        // console.log(directionPressed);
         if(
             (directionPressed === "up" && this.direction !== "down") || 
             (directionPressed === "down" && this.direction !== "up") || 
@@ -124,8 +129,12 @@ class Game {
             (directionPressed === "right" && this.direction !== "left")
         ) {
             this.direction = directionPressed;
-            
         }
+
+        this.moveSnake();
+        this.updateGrid();
+        this.displayGrid();
+
     }
 
     isGameOver() {
@@ -135,9 +144,9 @@ class Game {
         game over */
         if (
             snakeHead.x < 0 ||
-            snakeHead.x >= this.width ||
+            snakeHead.x > this.width ||
             snakeHead.y < 0 ||
-            snakeHead.y >= this.width
+            snakeHead.y > this.width
         ) {
             this.gameOver = true;
             return;
@@ -150,7 +159,7 @@ class Game {
        for (let i = 1; i < this.snake.length; i++) {
         /* comparar coordenadas con cada elemento del snake array
         con cada iteración */
-            if(snakeHead.x === this.snake[i].x && snakeHead.y === this.snake[i].y) {
+            if(snakeHead.x === this.snake[i].x && snakeHead.y === this.snake[i].y) {
                 this.gameOver = true;
                 return;
             }
@@ -164,14 +173,17 @@ class Game {
 
         // mostrar el juego
         this.displayGrid();
-        this.moveSnake();
-        this.updateGrid();
+        // this.moveSnake();
+        // this.updateGrid();
         
-        // iniciar el intervalo de la serpiente al mismo tiempo que
-        // se mueve la misma y se actualiza el terreno de juego
-        // this.intervalId = setInterval(() => {
-        //     
-        // }, 125);
+        //iniciar el intervalo de la serpiente al mismo tiempo que
+        //se mueve la misma y se actualiza el terreno de juego
+        this.intervalId = setInterval(() => {
+            this.moveSnake();
+            this.updateGrid();
+            this.displayGrid();
+            
+        }, 125);
     }
     
     restartGame() {
@@ -253,6 +265,7 @@ window.onload = () => {
    
     // handleKeydown, que detecte el teclado
     document.addEventListener("keydown", (event) => {
+        console.log(event);
         switch(event.key) {
             /* en el caso de que se presione una tecla,
             haz que entre un parámetro en .changeDirection,
