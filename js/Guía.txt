@@ -1,3 +1,4 @@
+DONE
 - Crear un snake (punto)
     - Crear un div en un punto específico del grid y estilarlo con un color
 - El snake que se mueva
@@ -18,4 +19,10 @@
 - El mecanismo de comer funciona, se añade uno a la cola, lo he descubierto por error
 - Cuando el snake se pone encima del food no existe el snake, solo el food
 - El RandomFood está tope lejos del food que hace display
+
+TODOLIST
+
+- El snake no muere cuando se toca
+- No funcionan los límites derecha e izquierda
+- Crear pantalla gameOver
 

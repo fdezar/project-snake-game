@@ -19,11 +19,11 @@ class Game {
         this.direction = null;
         this.food = this.generateFood();
         this.score = 0;
-        this.gameOver = false;
+        // this.gameOver = false;
 
         this.gameScreen = document.querySelector(".game-screen");
-        this.scoreElement = document.getElementById("score");
-        this.scoreElement.innerHTML = `SCORE ${this.score}`;
+        this.scoreElement = document.getElementById("points");
+        this.scoreElement.innerHTML = this.score;
         this.displayGrid();
         // para que el juego pueda empezar presionando una flecha
         // document.addEventListener("keydown", (event) => {
@@ -60,9 +60,8 @@ class Game {
     }
 
     moveSnake() {
-
-        console.log("Current direction:", this.direction);
-        console.log("Snake head position:", this.snake[0].x, this.snake[0].y);
+        // console.log("Current direction:", this.direction);
+        // console.log("Snake head position:", this.snake[0].x, this.snake[0].y);
         // definición de serpiente y creación de copia
         const snakeHead = {...this.snake[0]};
 
@@ -92,7 +91,7 @@ class Game {
         if (snakeHead.x === this.food.x && snakeHead.y === this.food.y) {
             this.food = this.generateFood();
             this.score++;
-            this.scoreElement.innerHTML = `SCORE ${this.score}`;
+            this.scoreElement.innerHTML = this.score;
         
         /*
         si no ha comido la comida, significa que simplemente la
@@ -107,7 +106,7 @@ class Game {
         }
 
         // si hay un gameOver, para el setInterval. Si no, sigue
-        if(this.gameOver === true) {
+        if(this.isGameOver()) {
             clearInterval(this.intervalId);
         } else {
             this.updateGrid();
@@ -132,9 +131,9 @@ class Game {
         }
 
         this.moveSnake();
+        this.isGameOver();
         this.updateGrid();
         this.displayGrid();
-
     }
 
     isGameOver() {
@@ -144,12 +143,11 @@ class Game {
         game over */
         if (
             snakeHead.x < 0 ||
-            snakeHead.x > this.width ||
+            snakeHead.x > 29 ||
             snakeHead.y < 0 ||
-            snakeHead.y > this.width
+            snakeHead.y > 29
         ) {
-            this.gameOver = true;
-            return;
+            return true;
         }
 
         /* detectar una self-collision, comparando las coordenadas
@@ -160,35 +158,37 @@ class Game {
         /* comparar coordenadas con cada elemento del snake array
         con cada iteración */
             if(snakeHead.x === this.snake[i].x && snakeHead.y === this.snake[i].y) {
-                this.gameOver = true;
-                return;
+                return true;
             }
         }
 
         // si nada de eso sucede se sigue jugando
-        this.gameOver = false;
+        return false;
     }
 
     startGame() {
 
         // mostrar el juego
         this.displayGrid();
-        // this.moveSnake();
-        // this.updateGrid();
+        this.moveSnake();
+        this.updateGrid();
+        this.isGameOver();
         
         //iniciar el intervalo de la serpiente al mismo tiempo que
         //se mueve la misma y se actualiza el terreno de juego
-        this.intervalId = setInterval(() => {
-            this.moveSnake();
-            this.updateGrid();
-            this.displayGrid();
+        // this.intervalId = setInterval(() => {
+        //     this.moveSnake();
+        //     this.isGameOver();
+        //     this.updateGrid();
+        //     this.displayGrid();
             
-        }, 125);
+        // }, 125);
     }
     
     restartGame() {
 
         // restaurar a los valores originales
+        clearInterval(this.intervalId);
         this.snake = [{ x: 15, y: 15 }];
         this.direction = null;
         this.food = this.generateFood();
@@ -235,7 +235,7 @@ class Game {
                 // si es snake o food, añádele la clase
                 if (this.grid[y][x] === "snake") {
                     cell.classList.add("snake");
-                } else if (this.grid[y][x] === "food") {
+                } else if (this.grid[x][y] === "food") {
                     cell.classList.add("food");
                 }
 
