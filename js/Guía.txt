@@ -26,3 +26,21 @@ TODOLIST
 - No funcionan los límites derecha e izquierda
 - Crear pantalla gameOver
 
+ // para que el juego pueda empezar presionando una flecha
+        // document.addEventListener("keydown", (event) => {
+        //     console.log("starting game");
+        //     if (
+        //         event.key === "ArrowUp" ||
+        //         event.key === "ArrowDown" ||
+        //         event.key === "ArrowLeft" ||
+        //         event.key === "ArrowRight"
+        //     ) {
+        //         this.startGame();
+        //     }
+        // });
+
+
+// inicialización del juego posterior a que todo lo demás esté cargado
+/* document.addEventListener("DOMContentLoaded", () => {
+    newGame = new Game(30, 30);
+}); */

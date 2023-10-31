@@ -23,20 +23,9 @@ class Game {
 
         this.gameScreen = document.querySelector(".game-screen");
         this.scoreElement = document.getElementById("points");
+        this.gameOverText = document.getElementById("game-over-text");
         this.scoreElement.innerHTML = this.score;
         this.displayGrid();
-        // para que el juego pueda empezar presionando una flecha
-        // document.addEventListener("keydown", (event) => {
-        //     console.log("starting game");
-        //     if (
-        //         event.key === "ArrowUp" ||
-        //         event.key === "ArrowDown" ||
-        //         event.key === "ArrowLeft" ||
-        //         event.key === "ArrowRight"
-        //     ) {
-        //         this.startGame();
-        //     }
-        // });
         this.startGame();
     }
 
@@ -62,6 +51,7 @@ class Game {
     moveSnake() {
         // console.log("Current direction:", this.direction);
         // console.log("Snake head position:", this.snake[0].x, this.snake[0].y);
+
         // definición de serpiente y creación de copia
         const snakeHead = {...this.snake[0]};
 
@@ -107,7 +97,10 @@ class Game {
 
         // si hay un gameOver, para el setInterval. Si no, sigue
         if(this.isGameOver()) {
+            console.log("Game Over");
             clearInterval(this.intervalId);
+            this.gameOverText.style.visibility = "visible"; 
+
         } else {
             this.updateGrid();
         }
@@ -170,19 +163,19 @@ class Game {
 
         // mostrar el juego
         this.displayGrid();
-        this.moveSnake();
-        this.updateGrid();
-        this.isGameOver();
+        // this.moveSnake();
+        // this.updateGrid();
+        // this.isGameOver();
         
-        //iniciar el intervalo de la serpiente al mismo tiempo que
-        //se mueve la misma y se actualiza el terreno de juego
-        // this.intervalId = setInterval(() => {
-        //     this.moveSnake();
-        //     this.isGameOver();
-        //     this.updateGrid();
-        //     this.displayGrid();
+        /* iniciar el intervalo de la serpiente al mismo tiempo que
+        se mueve la misma y se actualiza el terreno de juego */
+        this.intervalId = setInterval(() => {
+            this.moveSnake();
+            this.isGameOver();
+            this.updateGrid();
+            this.displayGrid();
             
-        // }, 125);
+        }, 125);
     }
     
     restartGame() {
@@ -194,6 +187,8 @@ class Game {
         this.food = this.generateFood();
         this.intervalId = null;
         this.score = 0;
+        this.scoreElement.innerHTML = this.score;
+        this.gameOverText.style.visibility = "hidden";
 
         // volver a empezar el juego
         this.startGame();
@@ -285,8 +280,3 @@ window.onload = () => {
             }
     });
 }
-
-// inicialización del juego posterior a que todo lo demás esté cargado
-/* document.addEventListener("DOMContentLoaded", () => {
-    newGame = new Game(30, 30);
-}); */
