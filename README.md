@@ -6,3 +6,6 @@ How to play
 - In order to start the game, press an arrow key.
 - Press any arrow key in order to move the snake.
 - Eat as much food as possible without dying.
+
+Game URL
+https://fdezar.github.io/project-snake-game/
